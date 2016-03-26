@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<title>Hello AngularJS</title>
+<link
+	href="css/angular-bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak { 
+	display: none !important;
+}
+</style>
+</head>
+
+<body ng-app="salesApp" ng-cloak class="ng-cloak">
+	<div ng-controller="navigation as nav" class="container">
+		<ul class="nav nav-pills" role="tablist">
+			<li ng-class="{active:nav.tab('home')}"><a href="#/">home</a></li>
+			<li ng-class="{active:nav.tab('navigation')}"><a href="#/login">login</a></li>
+			<li ng-show="authenticated"><a href="" ng-click="nav.logout()">logout</a></li>
+		</ul>
+	</div>
+	<div ng-view class="container"></div>
+	
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/angular/angular.min.js"></script>
+	<script src="js/angular/app.js"></script> 
+	<script src="js/angular/angular-route.min.js"></script>
+	<script src="js/angular/angular-resource.min.js"></script>
+	
+</body>
+</html>
