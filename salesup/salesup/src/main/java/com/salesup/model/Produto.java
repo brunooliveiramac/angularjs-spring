@@ -3,6 +3,7 @@ package com.salesup.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -19,86 +20,37 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+@Entity 
 public class Produto {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotEmpty(message = "Descrição é obrigatória")
-	@Size(max = 60, message = "A descrição não pode conter mais de 60 caracteres")
 	private String descricao;
 	
-	
-	@NotNull(message = "Date de cadastro é obrigatória")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Temporal(TemporalType.DATE)
-	private Date dataCadastro;
-	
-
-	@NotNull(message = "Valor é obrigatório")
-	@DecimalMin(value = "0.01", message = "Valor não pode ser menor que 0,01")
-	@DecimalMax(value = "9999999.99", message = "Valor não pode ser maior que 9.999.999,99")
-	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 	
-	@NotNull(message = "Valor é obrigatório")
-	@DecimalMin(value = "0.01", message = "Valor não pode ser menor que 0,01")
-	@DecimalMax(value = "9999999.99", message = "Valor não pode ser maior que 9.999.999,99")
-	@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal valor_custo;
-	
-	@Enumerated(EnumType.STRING)
-	private StatusProduto status;
-
 	public Long getCodigo() {
 		return codigo;
 	}
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-
 	public String getDescricao() {
 		return descricao;
 	}
-
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
-	public Date getDataCadastro() {
-		return dataCadastro;
-	}
-	 
-	public void setDataCadastro(Date dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
 	public BigDecimal getValor() {
 		return valor;
 	}
-
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-
-	public BigDecimal getValor_custo() {
-		return valor_custo;
-	}
-
-	public void setValor_custo(BigDecimal valor_custo) {
-		this.valor_custo = valor_custo;
-	}
-
-	public StatusProduto getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusProduto status) {
-		this.status = status;
-	}
-
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,7 +67,7 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		Produto other = (Produto) obj; 
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

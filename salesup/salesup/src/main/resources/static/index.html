@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Hello AngularJS</title>
+<title>UpSales</title>
 <link
 	href="css/angular-bootstrap.css"
 	rel="stylesheet">
@@ -9,25 +9,51 @@
 [ng\:cloak], [ng-cloak], .ng-cloak { 
 	display: none !important;
 }
+ 
 </style>
-</head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta charset="UTF-8">
+
+</head> 
+
 
 <body ng-app="salesApp" ng-cloak class="ng-cloak">
-	<div ng-controller="navigation as nav" class="container">
-		<ul class="nav nav-pills" role="tablist">
-			<li ng-class="{active:nav.tab('home')}"><a href="#/">home</a></li>
-			<li ng-class="{active:nav.tab('navigation')}"><a href="#/login">login</a></li>
-			<li ng-show="authenticated"><a href="" ng-click="nav.logout()">logout</a></li>
-		</ul>
-	</div>
-	<div ng-view class="container"></div>
+
 	
-	<script src="js/jquery-2.1.4.min.js"></script>
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">UpSales</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul  ng-controller="navigation as nav" class="nav navbar-nav">
+					<li ng-class="{active:nav.tab('home')}"><a href="#/">Home</a></li>
+					<li ng-class="{active:nav.tab('ProdutoController')}"><a href="#/formproduto">Cadastro Produto</a></li>
+					<li ng-class="{active:nav.tab('navigation')}"><a href="#/login">Login</a></li>
+      </ul>
+ 
+      <ul  ng-controller="navigation as nav" class="nav navbar-nav navbar-right">
+			<li ng-show="authenticated"><a href="" ng-click="nav.logout()">Logout</a></li>       
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+ 
+	<div ng-view class="container"></div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery-2.1.4.min.js"></script>
 	<script src="js/angular/angular.min.js"></script>
 	<script src="js/angular/app.js"></script> 
 	<script src="js/angular/angular-route.min.js"></script>
 	<script src="js/angular/angular-resource.min.js"></script>
+	<script src="js/angular/controller/cadastro-produto.js"></script>
+   <script src="js/angular/service/app-service.js"></script>
 	
+	<script src="js/angular/service/app-service.js"></script>
 </body>
 </html>

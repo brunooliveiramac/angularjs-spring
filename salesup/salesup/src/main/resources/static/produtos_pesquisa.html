@@ -1,0 +1,40 @@
+		
+
+		<head>
+		        <meta charset="utf-8">
+		        <title>Produtos</title>
+		</head>
+		
+		       <p class="alert alert-info" ng-show="mensagem.length">
+                                {{mensagem}}
+               </p> 
+		
+		 <div class="container"> 
+		
+		 <li style="margin-top: 10px">
+			<div class="pull-right" >   
+				<a href="#/formproduto" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
+			</div>
+	     </li> 
+			<div class="page-header">
+				<h3>Produtos</h3>
+			</div>
+			
+			<input ng-model="filter" style="margin-top: 20px; margin-bottom: 20px;" class="form-control" placeholder="Filtrar">
+			
+			
+			<table class="table table-bordered"> 
+   					   
+   				    <div ng-repeat="produto in produtos | filter:filter">
+					  
+					<div class="pull-right">     
+						<a href="#/produtos/editar/{{produto.codigo}}" class="btn btn-xs btn-default"  title="Editar"><span class="glyphicon glyphicon-edit"></span></a>		
+						<a href="" ng-click="remover(produto)" class="btn btn-xs btn-default" title="Deletar"><span class="glyphicon glyphicon-remove"></span></a>
+					</div>
+					
+					<p>{{produto.descricao}}</p>
+				    </div>
+					
+
+		 </table>			
+	</div>

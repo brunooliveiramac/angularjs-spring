@@ -1,4 +1,4 @@
-angular.module('salesApp', [ 'ngRoute' ]).config(function($routeProvider, $httpProvider) {
+angular.module('salesApp', [ 'ngRoute', 'meusServicos' ]).config(function($routeProvider, $httpProvider) {
 
 	$routeProvider.when('/', {
 		templateUrl : 'home.html',
@@ -7,7 +7,18 @@ angular.module('salesApp', [ 'ngRoute' ]).config(function($routeProvider, $httpP
 	}).when('/login', {
 		templateUrl : 'login.html',
 		controller : 'navigation',
-		controllerAs : 'controller'
+		controllerAs : 'controller' 
+	}).when('/formproduto', {
+		templateUrl : 'produto_cadastro.html',
+		controller : 'ProdutoController' 
+	})
+	.when('/produtos', { 
+		templateUrl : 'produtos_pesquisa.html',
+		controller : 'ProdutoController' 
+	}) 
+	.when('/produtos/editar/:produtoId', { 
+		templateUrl : 'produto_cadastro.html',
+		controller : 'ProdutoController' 
 	}).otherwise('/');
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -15,7 +26,7 @@ angular.module('salesApp', [ 'ngRoute' ]).config(function($routeProvider, $httpP
 }).controller('navigation',
 
 function($rootScope, $http, $location, $route) {
-	
+	 
 	var self = this;
 
 	self.tab = function(route) {
@@ -53,7 +64,7 @@ function($rootScope, $http, $location, $route) {
 		authenticate(self.credentials, function() {
 			if ($rootScope.authenticated) {
 				console.log("Login succeeded")
-				$location.path("/");
+				$location.path("/produtos"); 
 				self.error = false;
 				$rootScope.authenticated = true;
 			} else {
@@ -73,14 +84,14 @@ function($rootScope, $http, $location, $route) {
 	}
 
 }).controller('home', function($http) {
-	var self = this;
+	var self = this; 
 	$http.get('token').success(function(token) {
 		$http({
 			url : 'http://localhost:9000',
 			method : 'GET',
 			headers : {
 				'X-Auth-Token' : token.token
-			}
+			}  
 		}).success(function(data) {
 			self.greeting = data;
 		});

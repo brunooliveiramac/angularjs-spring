@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableRedisHttpSession
 public class LoginController {
-	 
+	  
 	
 	@RequestMapping("/user")
 	public Principal user(Principal user) {
