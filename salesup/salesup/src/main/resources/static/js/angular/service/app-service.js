@@ -7,7 +7,7 @@ angular.module('meusServicos', ['ngResource'])
 				}
 				
 			});
-})
+}) 
 .factory('cadastroDeProdutos', function(recursoProduto, $q) { //Um serviço depende de outro
 	
 		var servico = {};
@@ -18,7 +18,7 @@ angular.module('meusServicos', ['ngResource'])
 				if(produto.codigo){
 					recursoProduto.update({produtoId : produto.codigo}, produto, function() {
 						resolve({
-							mensagem : 'Produto alterado!',
+							mensagem : 'Produto alterado com sucesso!',
 							inclusao : false
 						});
 					}, function() {
@@ -40,4 +40,49 @@ angular.module('meusServicos', ['ngResource'])
 		};
 		
 		return servico;
+}) 
+.factory('recursoCategoria', function($resource) {
+	 
+	return  $resource('/categorias/:categoriaId', null,{
+		update : {
+			method: 'PUT'
+		}
+		
+	}); 
 })
+.factory('cadastroCategoria', function(recursoCategoria, $q) {
+	
+		
+		var servico = {};
+		 
+		servico.cadastrar = function(categoria) {
+				return $q(function(resolve, reject) {
+					
+					if(categoria.id){
+						recursoCategoria.update({categoriaId : categoria.id}, categoria, function() {
+							resolve({ 
+								mensagem : 'Categoria ' + categoria.descricao + ' alterada com sucesso!',
+								inclusao : false
+							});  
+						}, function(erro) {
+							reject({ 
+								mensagem : 'Erro ao alterar categoria',
+							});
+						});
+					}else{ 
+						recursoCategoria.save(produto,  function() {
+							resolve({
+								mensagem : 'Categoria '+ categoria.descricao + ' cadastrada com sucesso!',
+								inclusao : true
+							})
+					 }, function(erro) {
+						   reject({
+							   mensagem : 'Erro ao cadastrar categoria!'
+						   })
+					 }); 
+						
+					}					
+				});
+		}
+	
+});

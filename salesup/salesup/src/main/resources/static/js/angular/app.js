@@ -10,15 +10,21 @@ angular.module('salesApp', [ 'ngRoute', 'meusServicos' ]).config(function($route
 		controllerAs : 'controller' 
 	}).when('/formproduto', {
 		templateUrl : 'produto_cadastro.html',
-		controller : 'ProdutoController' 
+		controller : 'ProdutoController',
+		controllerAs : 'controller' 
+
 	})
-	.when('/produtos', { 
+	.when('/produtos', {  
 		templateUrl : 'produtos_pesquisa.html',
-		controller : 'ProdutoController' 
+		controller : 'ProdutosController',
+		controllerAs : 'controller' 
+ 
 	}) 
 	.when('/produtos/editar/:produtoId', { 
 		templateUrl : 'produto_cadastro.html',
-		controller : 'ProdutoController' 
+		controller : 'ProdutoController',
+		controllerAs : 'controller' 
+
 	}).otherwise('/');
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
