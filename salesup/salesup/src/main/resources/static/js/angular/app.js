@@ -28,6 +28,13 @@ angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstr
 		controller : 'SimulacaoController',
 		controllerAs : 'contr' 
 
+	})
+	.when('/finalizar', {   
+		templateUrl : 'pagamento_produto.html'
+	})
+	.when('/ver', {  
+		templateUrl : 'ver_produto.html'
+
 	}).otherwise('/');
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -98,12 +105,12 @@ function($rootScope, $http, $location, $route) {
 	$http.get('token').success(function(token) {
 		$http({
 			url : 'http://localhost:9000',
-			method : 'GET',
+			method : 'GET', 
 			headers : {
 				'X-Auth-Token' : token.token
 			}  
 		}).success(function(data) {
-			self.greeting = data;
+
 		});
 	})
 });

@@ -32,6 +32,8 @@ public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	private Long codigo;
+	
+	private String nome;
 	 
 	private String descricao;	
 	
@@ -41,8 +43,13 @@ public class Produto implements Serializable{
 	
 	private Date data_cadastro;
 	 
+	private BigDecimal qtdEstoque;
 	
 	private Categoria categoria;
+	
+	private String prod_imagem;
+	
+	private Venda venda;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getData_cadastro() {
@@ -90,6 +97,33 @@ public class Produto implements Serializable{
 		this.valor_custo = valor_custo;
 	}
 	
+	public BigDecimal getQtdEstoque() {
+		return qtdEstoque;
+	}
+	public void setQtdEstoque(BigDecimal qtdEstoque) {
+		this.qtdEstoque = qtdEstoque;
+	}
+	public String getProd_imagem() {
+		return prod_imagem;
+	}
+	public void setProd_imagem(String prod_imagem) {
+		this.prod_imagem = prod_imagem;
+	}
+	
+	@ManyToOne 
+	@JoinColumn(name = "venda", referencedColumnName= "id", nullable = true)
+	public Venda getVenda() {
+		return venda;
+	}
+	public void setVenda(Venda venda) {
+		this.venda = venda;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	} 
 	
 	@Override
 	public int hashCode() {

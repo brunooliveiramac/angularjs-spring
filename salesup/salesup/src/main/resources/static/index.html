@@ -9,9 +9,32 @@
 [ng\:cloak], [ng-cloak], .ng-cloak { 
 	display: none !important;
 }
+
+ main {
+            padding-top:50px;
+            
+       }
+footer {
+			background: #333;
+			color: #fff;
+			text-align: center;
+			padding: 20px 0;
+	  		position: absolute;
+  			position:fixed;
+  			clear: both; 
+	  }
+.tab-pane{
+			padding: 10px;
+	 }
+.navbar-header button{
+			color: #fff;
+	}
  
-</style>
+</style> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta name="viewport" content="width=device-width" />
     <meta charset="UTF-8">
 
 </head> 
@@ -19,49 +42,71 @@
 
 <body ng-app="salesApp" ng-cloak class="ng-cloak">
 
+<header>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">UpSales</a>
+	      		
+	      		
+	      		<button type="button" data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle">Menu</button>
+	      
+	    </div> 
 	
-<nav class="navbar navbar-inverse navbar-static-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">UpSales</a>
-    </div>
+	    
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    
+			      <ul  ng-controller="navigation as nav" class="nav navbar-nav">
+								<li ng-class="{active:nav.tab('home')}"><a href="#/">Home</a></li>
+								<li ng-class="{active:nav.tab('ProdutoController')}"><a href="#/formproduto">Cadastro Produto</a></li>
+								<li ng-class="{active:nav.tab('navigation')}"><a href="#/login">Login</a></li>
+			      </ul>
+			 
+			      <ul  ng-controller="navigation as nav" class="nav navbar-nav navbar-right">
+						<li ng-show="authenticated"><a href="" ng-click="nav.logout()">Logout</a></li>       
+			      </ul>
+			     
+			      <ul  ng-controller="navigation as nav" class="nav navbar-nav">
+			      <li class="dropdown">
+			          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="#">Produto</a></li>
+			            <li><a href="#">Another action</a></li>
+			            <li><a href="#">Something else here</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">Separated link</a></li>
+			            <li role="separator" class="divider"></li>
+			            <li><a href="#">One more separated link</a></li>
+			          </ul>
+			        </li> 
+			       </ul>
+			       
+			       <ul  ng-controller="navigation as nav" class="nav navbar-nav">
+			       			<li class="dropdown">
+			       				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração <span class="caret"></span></a>
+			       				<ul class="dropdown-menu">
+			       					<li><a href="">Page 1</a>
+			       					<li><a href="">Page 2</a>
+			       				</ul>
+			       			</li>
+			       		
+			       </ul>
+	      
+	    </div>
+	  </div>
+	</nav> 
+</header>
+		
+ <main>
+			
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul  ng-controller="navigation as nav" class="nav navbar-nav">
-					<li ng-class="{active:nav.tab('home')}"><a href="#/">Home</a></li>
-					<li ng-class="{active:nav.tab('ProdutoController')}"><a href="#/formproduto">Cadastro Produto</a></li>
-					<li ng-class="{active:nav.tab('navigation')}"><a href="#/login">Login</a></li>
-      </ul>
- 
-      <ul  ng-controller="navigation as nav" class="nav navbar-nav navbar-right">
-			<li ng-show="authenticated"><a href="" ng-click="nav.logout()">Logout</a></li>       
-      </ul>
-     
-      <ul  ng-controller="navigation as nav" class="nav navbar-nav">
-      <li class="dropdown">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Produto</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-       </ul>
-      
-    </div>
-  </div>
-</nav>
+		<div ng-view></div>
 
-
- 
-	<div ng-view class="container"></div>
+ </main>
+  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	
 	<script src="js/bootstrap.min.js"></script> 
+	<script src="js/wow.min.js"></script>  
 	<script src="js/jquery-2.1.4.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
 	<script src="js/angular/app.js"></script> 
@@ -79,6 +124,15 @@
     <script src="js/angular/controller/simulacao.js"></script> 
     <script src="js/angular/service/app-service.js"></script>
     
+	
+<script>
+	$(function() {
+			 
+		new WOW().init();
+		
+	});
+</script>
+	
 	
 </body>
 </html>

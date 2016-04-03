@@ -1,42 +1,114 @@
 		
 
 		<head>
-		        <meta charset="utf-8">
-		        <title>Produtos</title>
+				<style>
+					 .navbar-header button {
+						 color: #fff
+						 }
+						.fullscreen {
+							width:100%;
+						 }
+						 main {
+		            		padding-top:50px;
+		       		 	 }
+		   		</style>
+				       
+				        <meta charset="utf-8">
+				        <title>Produtos</title>
 		</head>
 		
-		<body ng-cotroller="ProdutosController">
+		
+		
+<body ng-cotroller="ProdutosController">
 		       <p class="alert alert-info" ng-show="mensagem.length">
                                 {{mensagem}}
                </p> 
-		
-		 <div class="container"> 
-		
-		 <li style="margin-top: 10px">
+               
+            <div class="container-fluid"> 
+				<div class="row" id="home">
+					<div id="carousel" class="carousel slide" data-ride="carousel">
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<img src="images/banner1.jpg" alt="Moda" class="fullscreen" />
+							</div>
+							<div class="item">
+								<img src="images/banner2.jpg" alt="Moda Infantil" class="fullscreen" />
+							</div> 
+						</div>
+						<a href="#carousel" class="left carousel-control" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+						</a>
+						<a href="#carousel" class="right carousel-control" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+					</div>
+				</div>
+			</div>
+               
+
+			
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-sm-3">
+						<div>
+							<h3 class="text-center">Categorias</h3>
+						</div>
+
+						<ul class="list-group"> 
+							<li class="list-group-item"><a href="#">Camisetas Masculinas</a></li>
+							<li class="list-group-item"><a href="#">Camisetas Femininas</a></li>
+							<li class="list-group-item"><a href="#">Roupas de Inverno</a></li>
+							<li class="list-group-item"><a href="#">Roupas de Verão</a></li>
+						</ul>
+					</div>
+
+						<div class="col-xs-12 col-sm-9">
+							<div id="novidades">
+								<h3 class="text-center">Novidades</h3>
+							</div>
+				     		
+				     		<div ng-repeat="produto in produtos | filter:filter">
+	 
+							<div class="col-xs-12 col-md-4 thumbnail text-center wow fadeInUp" data-wow-delay=”1s”>
+								<figure>
+									<img src="images/camisa-azul.png" alt="Camisa azul importada" />
+	
+									<div>
+										<h4>{{produto.descricao}}</h4>
+										<p>Camisa azul importada com preço acessível e com pano de qualidade</p>
+									</div>
+								</figure>
+								<div class="btn-group">
+									<a href="#" class="btn btn-default">R$ 190,00</a>
+									<a href="#" class="btn btn-primary">
+										<span class="glyphicon glyphicon-shopping-cart">
+										</span>
+	
+										Comprar
+	
+									</a>
+								</div>
+							</div>
+						</div>
+						</div>
+				</div>
+			</div>
+ 
+</body>
+
+
+	<!--  <li style="margin-top: 10px">
 			<div class="pull-right" >   
 				<a href="#/formproduto" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span></a>
 			</div>
-	     </li> 
-			<div class="page-header">
-				<h3>Produtos</h3>
-			</div>
+	     </li> --> 
 			
-			<input ng-model="filter" style="margin-top: 20px; margin-bottom: 20px;" class="form-control" placeholder="Filtrar">
-			
-			
-			<table class="table table-bordered"> 
-   					    
-   				    <div ng-repeat="produto in produtos | filter:filter">
-					  
-					<div class="pull-right">     
-						<a href="#/produtos/editar/{{produto.codigo}}" class="btn btn-xs btn-default"  title="Editar"><span class="glyphicon glyphicon-edit"></span></a>		
-						<a href="" ng-click="remover(produto)" class="btn btn-xs btn-default" title="Deletar"><span class="glyphicon glyphicon-remove"></span></a>
-					</div>
-					
-					<p>{{produto.descricao}}</p>
-				    </div>
-					
+<!-- 			<input ng-model="filter" style="margin-top: 20px; margin-bottom: 20px;" class="form-control" placeholder="Filtrar">
+ -->	
 
-		 </table>			
-	</div>
-</body>
+<!-- <div class="pull-right">     
+							<a href="#/produtos/editar/{{produto.codigo}}" class="btn btn-xs btn-default"  title="Editar"><span class="glyphicon glyphicon-edit"></span></a>		
+							<a href="" ng-click="remover(produto)" class="btn btn-xs btn-default" title="Deletar"><span class="glyphicon glyphicon-remove"></span></a>
+						</div>
+						
+						<p>{{produto.descricao}}</p> -->

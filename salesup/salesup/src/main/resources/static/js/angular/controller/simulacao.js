@@ -12,7 +12,7 @@ google.setOnLoadCallback(function() {
   angular.bootstrap(document.body, ['salesApp']);
 });
  
-
+ 
 angular.module('salesApp').controller('SimulacaoController', function ($scope, $uibModal, $log) {
 	
 
