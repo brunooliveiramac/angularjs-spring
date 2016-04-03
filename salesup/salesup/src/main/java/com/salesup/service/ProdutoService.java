@@ -27,11 +27,18 @@ public class ProdutoService {
 		List<Produto> list = produtos.findAll();
 		return list; 
 	}
-
+ 
 	public void remove(Long id) {
-		Produto produto = new Produto();
-		produto = produtos.findByCodigo(id);
-		produtos.delete(produto); 
+		try {
+			Produto produto = new Produto();
+			produto = produtos.findByCodigo(id);
+			System.out.println("Produto: "   + produto);
+			produtos.delete(produto); 
+			System.out.println("Removido ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void update(Long id, Produto produto) {

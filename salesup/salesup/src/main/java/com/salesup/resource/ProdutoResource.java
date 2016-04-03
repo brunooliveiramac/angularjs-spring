@@ -52,7 +52,6 @@ public class ProdutoResource {
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<?> remove(@PathVariable("id") Long id) {
 		produtoService.remove(id); 
-		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	

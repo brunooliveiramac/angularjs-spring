@@ -1,0 +1,105 @@
+    
+	<head>
+					        <meta charset="utf-8">
+	</head>
+
+<body ng-controller="SimulacaoController as contr ">
+      <h3>Simulação</h3>  
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">Produtos</div>
+		  <div class="panel-body">
+      			<div ng-controller="SimulacaoController" ng-show="authenticated" id="chart_div_simulacao"></div>
+		  </div> 
+		</div>
+		
+		
+		<button class="btn btn-default" ng-click="contr.opentab('first')">
+			5%  
+		</button>
+		<button class="btn btn-default" ng-click="contr.opentab('second')">
+			10%
+		</button>
+		<button class="btn btn-default" ng-click="contr.open()">
+			Add with Modal
+		</button>
+		
+		
+		<div ng-switch on="contr.tab">
+			
+			<div ng-switch-when="first">
+				<div ng-controller="SubController as subcontr">
+					<h3>Comissão 5%</h3>
+					
+						<ul>
+							<li ng-repeat="item in subcontr.list()">
+								<span ng-bind="item.label"></span>
+								<span > - </span>
+						        <span ng-bind="item.valor * 0.05"></span>
+								
+							</li>
+						</ul>
+						
+						<button class="btn btn-default" ng-click="subcontr.add()">
+							Add more
+						</button>
+				</div> 
+			</div> 
+			
+			<div ng-switch-when="second">
+				<div ng-controller="SubController as subcontr">
+					<h3>Comissão 10%</h3>
+					
+						<ul> 
+							<li ng-repeat="item in subcontr.list()">
+								<span ng-bind="item.label"></span>
+								<span > - </span>
+						        <span ng-bind="item.valor * 0.10"></span>
+							</li>
+						</ul> 
+						 
+						<button class="btn btn-default" ng-click="subcontr.add()">
+							Add more  
+						</button>  
+						
+				</div>
+			</div>
+
+		</div> 	
+		
+		
+		 
+		
+		<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Novo produto:</h3>
+        </div> 
+        <div class="modal-body"> 
+			<ul>
+	   				 <label>Id:</label> 
+					 <input type="text" name="id" class="form-control" ng-model="produto.id" >
+ 
+	   				 <label>Descrição:</label> 
+					 <input type="text" name="label" class="form-control" ng-model="produto.label">
+ 
+	   				 <label>Valor:</label> 
+					 <input type="text" name="val" class="form-control" ng-model="produto.valor">
+			</ul>
+        </div> 
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+		
+			
+</body>
+
+
+
+
+
+<div  ng-show="!authenticated">
+	<p>Login to see </p> 
+</div>
+

@@ -27,7 +27,6 @@ public class Categoria implements Serializable{
 	
 	private Long id; 
 	private String descricao; 
-	private List<Produto> produtos = new  ArrayList<Produto>();
 	
 	 
 	@Id  
@@ -48,16 +47,7 @@ public class Categoria implements Serializable{
 		this.descricao = descricao;
 	}
 	
-	 
-	@JsonIgnore
-	@OneToMany(mappedBy = "categoria", targetEntity = Produto.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-	
+
 	
 
 }

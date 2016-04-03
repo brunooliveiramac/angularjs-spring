@@ -1,9 +1,9 @@
-angular.module('salesApp', [ 'ngRoute', 'meusServicos' ]).config(function($routeProvider, $httpProvider) {
+angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstrap' ]).config(function($routeProvider, $httpProvider) {
 
-	$routeProvider.when('/', {
+	$routeProvider.when('/', { 
 		templateUrl : 'home.html',
-		controller : 'home',
-		controllerAs : 'controller'
+		controller : 'DashboardController',
+		controllerAs: 'controller '
 	}).when('/login', {
 		templateUrl : 'login.html',
 		controller : 'navigation',
@@ -12,18 +12,21 @@ angular.module('salesApp', [ 'ngRoute', 'meusServicos' ]).config(function($route
 		templateUrl : 'produto_cadastro.html',
 		controller : 'ProdutoController',
 		controllerAs : 'controller' 
-
 	})
 	.when('/produtos', {  
 		templateUrl : 'produtos_pesquisa.html',
 		controller : 'ProdutosController',
 		controllerAs : 'controller' 
- 
 	}) 
 	.when('/produtos/editar/:produtoId', { 
 		templateUrl : 'produto_cadastro.html',
 		controller : 'ProdutoController',
 		controllerAs : 'controller' 
+	})
+	.when('/simulacao', {  
+		templateUrl : 'simulacao.html',
+		controller : 'SimulacaoController',
+		controllerAs : 'contr' 
 
 	}).otherwise('/');
 
@@ -82,6 +85,7 @@ function($rootScope, $http, $location, $route) {
 		})
 	};
 
+	
 	self.logout = function() {
 		$http.post('logout', {}).finally(function() {
 			$rootScope.authenticated = false;

@@ -7,16 +7,16 @@ angular.module('salesApp').controller('ProdutosController', function($scope, rec
 	
 
 	recursoProduto.query(function(produtos){
-		selfProdutos.produtos = produtos; 
-     }, function(erro){
+		$scope.produtos = produtos; 
+     }, function(erro){  
      	console.log(erro);
      });	 
 	
-	$scope.remover = function(produto) {
+	$scope.remover = function(produto) { 
 		recursoProduto.delete({produtoId : produto.codigo}, function() {
-			var indiceProduto = selfProdutos.produtos.indexOf(produto); 
-			selfProdutos.produtos.splice(indiceProduto, 1);
-			selfProdutos.mensagem = 'Produto excluido com sucesso!';
+			var indiceProduto = $scope.produtos.indexOf(produto); 
+			$scope.produtos.splice(indiceProduto, 1);
+			$scope.mensagem = 'Produto excluido com sucesso!';
 		}, function(erro) {
 			 $scope.mensagem = 'Erro';
 		});		

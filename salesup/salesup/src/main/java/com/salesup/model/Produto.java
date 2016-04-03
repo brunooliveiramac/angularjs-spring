@@ -27,7 +27,7 @@ import org.springframework.format.annotation.NumberFormat;
 @Entity  
 @Table(name="produto")
 public class Produto implements Serializable{
-	
+	 
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,6 @@ public class Produto implements Serializable{
 	private BigDecimal valor;
 	 
 	private BigDecimal valor_custo;
-
 	
 	private Date data_cadastro;
 	 
@@ -75,7 +74,7 @@ public class Produto implements Serializable{
 	}
 	 
 	@ManyToOne   
-	@JoinColumn(name = "categoria", referencedColumnName= "id", nullable = false) 
+	@JoinColumn(name = "categoria", referencedColumnName= "id", nullable = true) 
 	public Categoria getCategoria() {
 		return categoria;
 	} 
@@ -118,5 +117,11 @@ public class Produto implements Serializable{
 	}
 	
 	 
+
+	@Override
+	public String toString() {
+		return "Produto [codigo=" + codigo + ", descricao=" + descricao + ", valor=" + valor + ", valor_custo="
+				+ valor_custo + ", data_cadastro=" + data_cadastro + ", categoria=" + categoria + "]";
+	}
 
 }

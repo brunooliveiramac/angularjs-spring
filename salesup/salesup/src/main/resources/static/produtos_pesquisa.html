@@ -5,6 +5,7 @@
 		        <title>Produtos</title>
 		</head>
 		
+		<body ng-cotroller="ProdutosController">
 		       <p class="alert alert-info" ng-show="mensagem.length">
                                 {{mensagem}}
                </p> 
@@ -25,7 +26,7 @@
 			
 			<table class="table table-bordered"> 
    					    
-   				    <div ng-repeat="produto in controller.produtos | filter:filter">
+   				    <div ng-repeat="produto in produtos | filter:filter">
 					  
 					<div class="pull-right">     
 						<a href="#/produtos/editar/{{produto.codigo}}" class="btn btn-xs btn-default"  title="Editar"><span class="glyphicon glyphicon-edit"></span></a>		
@@ -38,3 +39,4 @@
 
 		 </table>			
 	</div>
+</body>
