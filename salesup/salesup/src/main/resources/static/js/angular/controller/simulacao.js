@@ -103,7 +103,7 @@ angular.module('salesApp').controller('SimulacaoController', function ($scope, $
 	  var items = [
 	               {id: 1, label: 'Produto 0', valor: 15},
 	               {id: 2, label: 'Produto 1', valor: 10}
-	               ];
+	               ]; 
 	  
 	  return {
 		  list: function() {

@@ -1,0 +1,50 @@
+<div class="container">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">           
+    
+
+<body>
+<div class="container"> 
+
+<p class="alert alert-info" ng-show="message.length">{{message}}</p>
+	     
+	     <h3>Carrinho</h3> 
+	
+		<div class="row">  
+			<div class="panel panel-default">
+			 	<div class="panel-heading">Seu carrinho</div>
+			<table class="table table-bordered table-hover">
+				<tr>
+					<th></th> 
+					<th>Item</th>
+					<th>Quantidade</th>
+					<th>Total</th>
+					<th>Opções</th>
+				</tr>
+				 
+				<tbody>  
+					<tr ng-repeat="produto in produtos">
+						<td style="text-align:center;"><img style=" width: 90px; height: 100px;" src="images/produto.png" /></td>
+						<td>{{produto.nome}}</td> 
+						<td>{{produto.quantidade}}</td>
+						<td>$ {{produto.valor}}</td>
+						<td>
+							<a ng-click="remove(item)" 
+								class="glyphicon glyphicon-trash" />
+						</td>
+					</tr>
+				</tbody>
+				
+			</table>  
+			<div class="panel-footer">
+				<button class="btn btn-default">Checkout</button>
+				<p class="pull-right">Subtotal: $ {{venda.sub_total}}</p>
+			</div>
+		  </div>
+		 </div>
+</div> 
+</body>
+ 
+<div  ng-show="!authenticated">
+	<p>Login to see </p> 
+</div>
+</div>

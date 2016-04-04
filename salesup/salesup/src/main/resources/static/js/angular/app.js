@@ -1,6 +1,6 @@
-angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstrap' ]).config(function($routeProvider, $httpProvider) {
+angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstrap', 'minhasDiretivas']).config(function($routeProvider, $httpProvider) {
 
-	$routeProvider.when('/', { 
+	$routeProvider.when('/', {  
 		templateUrl : 'home.html',
 		controller : 'DashboardController',
 		controllerAs: 'controller '
@@ -29,8 +29,12 @@ angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstr
 		controllerAs : 'contr' 
 
 	})
-	.when('/finalizar', {   
-		templateUrl : 'pagamento_produto.html'
+	.when('/carrinho', {    
+		templateUrl : 'carrinho.html'
+	}) 
+	.when('/carrinho/add/:produtoId', {    
+		templateUrl : 'carrinho.html',
+		controller : 'CarrinhoController'
 	})
 	.when('/ver', {  
 		templateUrl : 'ver_produto.html'
@@ -38,7 +42,7 @@ angular.module('salesApp', [ 'ngRoute', 'meusServicos', 'ngAnimate', 'ui.bootstr
 	}).otherwise('/');
 
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
+	
 }).controller('navigation',
 
 function($rootScope, $http, $location, $route) {

@@ -84,5 +84,22 @@ angular.module('meusServicos', ['ngResource'])
 					}					
 				});
 		}
+	 
+})
+.factory('carrinhoFabrica', function() {
 	
+	
+	var produtos = []; 
+	
+	return {
+		 
+		list: function() {
+			return produtos;
+		}, 
+		
+		add: function(produto) {
+			produtos.push(produto);
+		}
+	}
+
 });

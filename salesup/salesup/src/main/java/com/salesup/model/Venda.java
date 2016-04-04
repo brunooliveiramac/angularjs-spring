@@ -1,5 +1,6 @@
 package com.salesup.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,10 @@ public class Venda {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data_venda; 
-	 
+	
+	private BigDecimal total = BigDecimal.ZERO;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -57,6 +61,13 @@ public class Venda {
 	}
 	public void setData_venda(Date data_venda) {
 		this.data_venda = data_venda;
+	}
+	
+	public BigDecimal getTotal() {
+		return total;
+	}
+	public void setTotal(BigDecimal total) {
+		this.total = total;
 	}
 	
 		

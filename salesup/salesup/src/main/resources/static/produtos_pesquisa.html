@@ -67,9 +67,14 @@
 								<h3 class="text-center">Novidades</h3>
 							</div>
 				     		
-				     		<div ng-repeat="produto in produtos | filter:filter">
+				     		<meu-painel ng-repeat="produto in produtos" nome="{{produto.nome}}" descricao="{{produto.descricao}}"
+				     		valor="{{produto.valor}}" produto="produto">	
+				     		
+				     				<img  style=" width: 145px; height: 160px;" src="images/produto.png" alt="Camisa azul importada" />
+				     					     		
+				     		</meu-painel>
 	 
-							<div class="col-xs-12 col-md-4 thumbnail text-center wow fadeInUp" data-wow-delay=”1s”>
+						<!--<div  ng-repeat="produto in produtos" class="col-xs-12 col-md-4 thumbnail text-center wow fadeInUp" data-wow-delay=”1s”>
 								<figure>
 									<img src="images/camisa-azul.png" alt="Camisa azul importada" />
 	
@@ -84,12 +89,13 @@
 										<span class="glyphicon glyphicon-shopping-cart">
 										</span>
 	
+	
 										Comprar
 	
 									</a>
 								</div>
-							</div>
-						</div>
+							
+							  </div> -->
 						</div>
 				</div>
 			</div>
